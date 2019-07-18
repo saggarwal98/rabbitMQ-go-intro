@@ -43,7 +43,7 @@ func main(){
 
 
 	err = ch.Qos(
-		1,     // prefetch count
+		0,     // prefetch count
 		0,     // prefetch size
 		false, // global
 	)
@@ -69,7 +69,7 @@ func main(){
 	msgs, err := ch.Consume(
 		q.Name, // queue
 		"",     // consumer
-		true,   // auto-ack
+		false,   // auto-ack
 		false,  // exclusive
 		false,  // no-local
 		false,  // no-wait
@@ -89,8 +89,9 @@ func main(){
 			log.Printf("%d : %s",counter, d.Body)
 			time.Sleep(3 * time.Second)
 			counter++
+			d.Ack(false)
 		}
-		log.Printf("Done")
+		// log.Printf("Done")
 	}()  
 	log.Printf("To exit press CTRL+C")
 

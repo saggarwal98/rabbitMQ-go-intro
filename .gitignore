@@ -1,0 +1,7 @@
+#Ignore bin files
+bin
+#Ignore pkg files
+pkg
+#Ignore src files
+src/golang.org
+src/github.com
